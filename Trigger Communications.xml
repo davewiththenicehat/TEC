@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>communications</name>
+			<script>
+
+
+--Below was a test, remeber text auto wraps in miniconsole if you set autoWrap = true
+--communicationsAll:echo("Really loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong line")
+
+--if (((&lt; isincs %filtered) &amp;&amp; (think isin %filtered)) || (, " isin %filtered)) { 
+--    ;if last socket read was a though set it to yes. For multilined thoughts.
+--    set %lastsocketthought yes
+--    ;Put the thought to the think window
+--    /aline -p @communications $replace(%filtered,$chr(32),$chr(160))
+--    ;I think puts thoughts into the listbox
+--    ;works    /aline -lp @TEC $replace(%filtered,$chr(32),$chr(160))
+--    ;/iline -lp @TEC 1 %filtered
+--    ;failed attempt at wrap
+--    ;/aline -lp @TEC $wrap($replace(%filtered,$chr(32),$chr(160)),verdant,-1,22,0)
+--    ;If &gt; is in the thought that it likely means the end of the thought. 
+--    if ( (&gt; isin %filtered) || (?" isin %filtered) || (." isin %filtered) || (!" isin %filtered) || (]" isin %filtered)) { set %lastsocketthought no }
+--  } ; end if thinks aloud is in filtered
+--  ;if thinks aloud is not in check if last socket was a thought
+--  ;if it was, put it to screen, see if the thought ends. Repeat as needed.
+--  else { 
+--    if (%lastsocketthought == yes) { 
+--      ;Put the thought to the think window
+--      /aline -p @communications $replace(%filtered,$chr(32),$chr(160))
+--      ;I think puts thoughts into the listbox
+--      ;works      /aline -lp @TEC $replace(%filtered,$chr(32),$chr(160))
+--      ;/iline -lp @TEC 1 %filtered
+--      ;If &gt; is in the thought that it likely means the end of the thought. 
+--      if ( (&gt; isin %filtered) || (?" isin %filtered) || (." isin %filtered) || (!" isin %filtered) || (]" isin %filtered)) { set %lastsocketthought no }
+--    } ; end if lastsocketthough is yes
+--  } ; end else thinks aloud is in filtered
+</script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>ThoughtFound</name>
+				<script>--Moving this below thoughts trigger will cause first line to repeat
+
+--This trigger allows support for multi line thoughts
+
+selectCurrentLine() --Selects ENTIRE line including line breaks.
+copy() --Copies CURRENT selection to clipboard
+appendBuffer("communicationsAll") --paste copied text to miniConsole
+--later appendBuffter("communicationsThoughts")
+
+--If the end of the thought is found, turn off thoughtFound so corrisponding
+--trigger will not occur.
+if string.ends(line, "&gt;") then thoughtFound = false end</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>return thoughtFound</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>4</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>Thoughts</name>
+				<script>--This trigger puts thoughts to the  communicationsAll window 
+--and to thoughts window.
+--Support for multi line though is follow up with ThoughtFound
+--ci=0,32,225&lt;name thinks aloud
+
+selectCurrentLine() --Selects ENTIRE line including line breaks.
+copy() --Copies CURRENT selection to clipboard
+appendBuffer("communicationsAll") --paste copied text to miniConsole
+--later appendBuffter("communicationsThoughts") --paste copied text to miniConsole
+thoughtFound = true --We need to run this again. this variable will trigger SpeechFound
+
+--If the end of the thought is found, turn off thoughtFound so corrisponding
+--trigger will not occur.
+if string.ends(line, "&gt;") then thoughtFound = false end</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>&lt;(\w+) thinks aloud:</string>
+					<string>&lt;You think aloud:</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+					<integer>2</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>Speech Found</name>
+				<script>--Moving this below speech trigger will cause first line to repeat
+
+--This trigger allows support for multi line speech or declrations
+
+selectCurrentLine() --Selects ENTIRE line including line breaks.
+copy() --Copies CURRENT selection to clipboard
+appendBuffer("communicationsAll") --paste copied text to miniConsole
+
+--If the end of the speech is found, turn off speechFound so corrisponding
+--trigger will not occur.
+if string.ends(line, "\"") then speechFound = false end</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>return speechFound</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>4</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>speech</name>
+				<script>--This trigger puts speech to the  communicationsAll window 
+--and to speech window.
+--Support for multi line though is follow up with SpeechFound trigger
+
+selectCurrentLine() --Selects ENTIRE line including line breaks.
+copy() --Copies CURRENT selection to clipboard
+appendBuffer("communicationsAll") --paste copied text to miniConsole
+--later appendBuffter("communicationsThoughts") --paste copied text to miniConsole
+speechFound = true --We need to run this again. this variable will trigger SpeechFound
+
+--If the end of the speech is found, turn off speechFound so corrisponding
+--trigger will not occur.
+if string.ends(line, "\"") then speechFound = false end</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>, "</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>0</integer>
+				</regexCodePropertyList>
+			</Trigger>
+		</TriggerGroup>
+	</TriggerPackage>
+</MudletPackage>

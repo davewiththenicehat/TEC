@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>textfilters</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName>textfilters</packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>Text Filters</name>
+				<script>--!!!!!!!!!!!!!!!!!!READ BEFORE CHANGING FILTER CODE!!!!!!!!!!!!!!!!!!!!!
+--Needed because TEC does not support GMCP or MSDP
+--so TEC outputs health bar, compass and other gui elements
+--over text with telnet...
+
+--ORDER OF THESE ITEMS ARE IMPORTANT!!!
+--These are intended to be in an order that will allow for
+--optimal performance.
+--I have placed items that delete the main line first
+--This removes the number of color filter triggers that occurs.
+--No we are never going to clean code enough to free up for the use of a mapping system.
+--Let's try any way!</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>RemoveFromScreen</name>
+					<script>deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>/parch2.jpg</string>
+						<string>/alloff.jpg</string>
+						<string>/macrobar.jpg</string>
+						<string>Loading toolbar graphics; please wait...</string>
+						<string>/IntroScreen.jpg</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>Compass</name>
+					<script>--Direction filters are:
+--N /\/ImageAt:downbar:65:12:http://tec.skotos.net:80/unlit.jpg or lit.jpg
+--NE /\/ImageAt:downbar:93:23:http://tec.skotos.net:80/unlit.jpg or lit.jpg
+--E /\/ImageAt:downbar:103:48:http://tec.skotos.net:80/unlit.jpg or lit.jpg
+--SE /\/ImageAt:downbar:93:74:http://tec.skotos.net:80/unlit.jpg or lit.jgp
+--S /\/ImageAt:downbar:65:82:http://tec.skotos.net:80/unlit.jpg or lit.jpg
+--SW /\/ImageAt:downbar:37:75:http://tec.skotos.net:80/unlit.jpg or lit.jpg
+--W /\/ImageAt:downbar:27:48:http://tec.skotos.net:80/unlit.jpg or lit.jpg
+--NW /\/ImageAt:downbar:37:23:http://tec.skotos.net:80/unlit.jpg or lit.jpg
+
+--/\/ImageAt:downbar: tells older clients this image should go in downbar.
+--										Probably just a bar down at the botom of the window.
+--:65:12: was most likely the pixel position of the compas on the client
+--				when this was added to the game. I think the java client.
+--http://tec.skotos.net:80 just showing the old client where the picture was
+--lit.jpg at the end means there is a room in that direction, light the compass
+--unlit.jgp at the end means there is NOT a room in that direction, do not light the compass</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList />
+					<regexCodePropertyList />
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>NortWest</name>
+						<script>if string.ends(line, "unlit.jpg") then --if line ends in unlit nothing in that direction
+	compass.unlit("nw") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "lit.jpg") then--if line ends in lit room in that direction, show on compas
+		compass.lit("nw") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+		deleteLine() --delete the current line so crap doesn't show on screen
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:37:23</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>West</name>
+						<script>if string.ends(line, "unlit.jpg") then --if line ends in unlit nothing in that direction
+	compass.unlit("w") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "lit.jpg") then--if line ends in lit room in that direction, show on compas
+		compass.lit("w") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+		deleteLine() --delete the current line so crap doesn't show on screen
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:27:48</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>SouthWest</name>
+						<script>if string.ends(line, "unlit.jpg") then --if line ends in unlit nothing in that direction
+	compass.unlit("sw") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "lit.jpg") then--if line ends in lit room in that direction, show on compas
+		compass.lit("sw") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+		deleteLine() --delete the current line so crap doesn't show on screen
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:37:75</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>South</name>
+						<script>if string.ends(line, "unlit.jpg") then --if line ends in unlit nothing in that direction
+	compass.unlit("s") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "lit.jpg") then--if line ends in lit room in that direction, show on compas
+		compass.lit("s") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+		deleteLine() --delete the current line so crap doesn't show on screen
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:65:82</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>SouthEast</name>
+						<script>if string.ends(line, "unlit.jpg") then --if line ends in unlit nothing in that direction
+	compass.unlit("se") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "lit.jpg") then--if line ends in lit room in that direction, show on compas
+		compass.lit("se") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+		deleteLine() --delete the current line so crap doesn't show on screen
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:93:74</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>East</name>
+						<script>if string.ends(line, "unlit.jpg") then --if line ends in unlit nothing in that direction
+	compass.unlit("e") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "lit.jpg") then--if line ends in lit room in that direction, show on compas
+		compass.lit("e") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+		deleteLine() --delete the current line so crap doesn't show on screen
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:103:48</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>NorthEast</name>
+						<script>if string.ends(line, "unlit.jpg") then --if line ends in unlit nothing in that direction
+	compass.unlit("ne") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "lit.jpg") then--if line ends in lit room in that direction, show on compas
+		compass.lit("ne") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+		deleteLine() --delete the current line so crap doesn't show on screen
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:93:23</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>North</name>
+						<script>if string.ends(line, "unlit.jpg") then --if line ends in unlit nothing in that direction
+	compass.unlit("n") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "lit.jpg") then--if line ends in lit room in that direction, show on compas
+		compass.lit("n") --Change compas image in ("direction) function is in scripts/gui/compassbar/compass.resize
+		deleteLine() --delete the current line so crap doesn't show on screen
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:65:12</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+				</TriggerGroup>
+				<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>Status Bar</name>
+					<script></script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList />
+					<regexCodePropertyList />
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>Health bar</name>
+						<script>if string.ends(line, "bar1_100.jpg") then
+	hpbar:setValue(100,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar1_87.jpg") then
+	hpbar:setValue(87,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar1_75.jpg") then
+	hpbar:setValue(75,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar1_62.jpg") then
+	hpbar:setValue(62,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar1_50.jpg") then
+	hpbar:setValue(50,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar1_37.jpg") then
+	hpbar:setValue(37,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar1_25.jpg") then
+	hpbar:setValue(25,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar1_12.jpg") then
+	hpbar:setValue(12,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar1_0.jpg") then
+	hpbar:setValue(3,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+	elseif string.ends(line, "bar1_off.jpg") then
+	hpbar:setValue(0,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+end --end if health is 100 check</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:415:12</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>Fatigue bar</name>
+						<script>if string.ends(line, "bar2_100.jpg") then
+	fatiguebar:setValue(100,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_87.jpg") then
+	fatiguebar:setValue(87,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_75.jpg") then
+	fatiguebar:setValue(75,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_62.jpg") then
+	fatiguebar:setValue(62,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_50.jpg") then
+	fatiguebar:setValue(50,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_37.jpg") then
+	fatiguebar:setValue(37,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_25.jpg") then
+	fatiguebar:setValue(25,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_12.jpg") then
+	fatiguebar:setValue(12,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_0.jpg") then
+	fatiguebar:setValue(3,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar2_off.jpg") then
+	fatiguebar:setValue(0,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+end --end if health is 100 check</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:436:12</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>Encumbrance Bar</name>
+						<script>if string.ends(line, "bar3_100.jpg") then
+	encumbrancebar:setValue(100,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_87.jpg") then
+	encumbrancebar:setValue(87,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_75.jpg") then
+	encumbrancebar:setValue(75,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_62.jpg") then
+	encumbrancebar:setValue(62,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_50.jpg") then
+	encumbrancebar:setValue(50,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_37.jpg") then
+	encumbrancebar:setValue(37,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_25.jpg") then
+	encumbrancebar:setValue(25,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_12.jpg") then
+	encumbrancebar:setValue(12,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_0.jpg") then
+	encumbrancebar:setValue(3,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar3_off.jpg") then
+	encumbrancebar:setValue(0,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+end --end if health is 100 check</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:457:12</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>Hunger bar</name>
+						<script>if string.ends(line, "bar4_100.jpg") then
+	hungerbar:setValue(100,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_87.jpg") then
+	hungerbar:setValue(87,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_75.jpg") then
+	hungerbar:setValue(75,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_62.jpg") then
+	hungerbar:setValue(62,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_50.jpg") then
+	hungerbar:setValue(50,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_37.jpg") then
+	hungerbar:setValue(37,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_25.jpg") then
+	hungerbar:setValue(25,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_12.jpg") then
+	hungerbar:setValue(12,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_0.jpg") then
+	hungerbar:setValue(3,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+elseif string.ends(line, "bar4_off.jpg") then
+	hungerbar:setValue(0,100) --set bar on screen
+	deleteLine() --delete the current line so crap doesn't show on screen
+end --end if health is 100 check</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#ff0000</mFgColor>
+						<mBgColor>#ffff00</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>/\/ImageAt:downbar:478:12</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>2</integer>
+						</regexCodePropertyList>
+					</Trigger>
+				</TriggerGroup>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>SideBar</name>
+					<script>deleteLine()
+--/\/TextAt:sidebar:5:17:Tip of the Day
+--/\/TextAt:sidebar:5:29:
+--/\/TextAt:sidebar:5:41:The Divortium Auxilii
+--/\/TextAt:sidebar:5:53:greets and assists
+--/\/TextAt:sidebar:5:65:newcomers to the City.
+--/\/TextAt:sidebar:5:77:Members of the Auxilii
+--/\/TextAt:sidebar:5:89:wear a triangular
+--/\/TextAt:sidebar:5:101:copper medallion.
+--/\/ImageAt:sidebar:0:0:http://tec.skotos.net:80/parch2.jpg
+--/\/ImageAt:sidebar:0:300:http://tec.skotos.net:80/parch2.jpg
+
+--/\/ImageAt:sidebar:0:0:http://tec.skotos.net:80/parch2.jpg
+--/\/TextAt:sidebar:5:17:TEC Geography Tip
+--/\/TextAt:sidebar:5:29: 
+--/\/TextAt:sidebar:5:41:At night, the Iridine
+--/\/TextAt:sidebar:5:53:alleys become unsafe,
+--/\/TextAt:sidebar:5:65:as thugs and brutes 
+--/\/TextAt:sidebar:5:77:can be found on the
+--/\/TextAt:sidebar:5:89:prowl, stalking 
+--/\/TextAt:sidebar:5:101:citizens</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>/\/TextAt:sidebar</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>2</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>sky</name>
+					<script>--good way of telling time of day is old images box.
+--These images were a skybox. Showed an image of
+--a sunny day, cloudy day, night so on.
+
+--in the future these will be used to convey time of day.
+--Maybe a background color. For know delete know sky images
+deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>/\/ImageAt:downbar:128:0:http://tec.skotos.net:80/e1100000.jpg</string>
+						<string>/\/ImageAt:downbar:128:0:http://tec.skotos.net:80/e1111111.jpg</string>
+						<string>/\/ImageAt:downbar:128:0:http://tec.skotos.net:80/e0001000.jpg</string>
+						<string>/\/ImageAt:downbar:128:0:http://tec.skotos.net:80/e0001101.jpg</string>
+						<string>/\/ImageAt:downbar:128:0:http://tec.skotos.net:80/e1000000.jpg</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>3</integer>
+						<integer>3</integer>
+						<integer>3</integer>
+						<integer>3</integer>
+						<integer>3</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>ColorFilter</name>
+					<script>--code here for
+--if background black ci=0,0,0 make it ci=255,255,255
+
+--Code provided by s/Mud/Game on mudletdiscord. THANK YOU s/Mud/Game!!!!
+
+--string.gsub referece: https://wiki.mudlet.org/w/Manual:String_Functions
+--string.gsub('The whole string to modify', 'what to replace in the string', 'what to replace it with')
+--%1 is whatever is inside of the ()
+--if you get ci=100,0,100 %1 is 100,0,100
+--so it's replacing ci=100,0,100 with &lt;100,0,100&gt;
+local replacement = string.gsub(line, 'ci=(%d+,%d+,%d+)', '&lt;%1&gt;')
+--So now all ci=#,#,# have turned into &lt;#,#,#&gt; in replacement this is a standard format lua can work with.
+
+selectCurrentLine() --select the current 'main' line. Including line breaks
+--So dreplace turns &lt;colorcode&gt; into colors
+--dreplace just does what decho would do, but deletes the selected text first. :wink:
+--in fact, it actually calls decho
+dreplace(replacement)
+echo("\n")
+echo(line)
+echo("\n\n")
+
+--sets the word wrap on the main window to 10
+--setWindowWrap("main", 10)</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>ci=</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>0</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>ColorWhiteBackground</name>
+					<script>--code here if blackground is black
+--do nothing
+--else do below
+
+--Turn the background of the current line to setings default.
+--needed because dreplace turns the background black.
+selectCurrentLine()
+bg('white')</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>Login Handshake</name>
+					<script>--This game requires a handshake to get the real login tempPromptTrigger
+--This is that handshake.
+send([[/\/Connect: n/a!!n]],false)
+
+--opens the voting window at login
+openUrl("http://www.topmudsites.com/vote-scarlatc.html")</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>Login: </string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>3</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+		</TriggerGroup>
+	</TriggerPackage>
+</MudletPackage>
